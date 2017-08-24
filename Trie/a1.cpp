@@ -14,6 +14,8 @@
 
 using namespace std;
 
+const int MAXWORDS = 50000;
+
 //Nodes in the trie
 struct trieNode {
 	int words;
@@ -39,20 +41,14 @@ string checkWord(string);
 
 
 
-//trieNode vertex;
-
 
 int wordCount = 0;
-string words[200];
+string words[MAXWORDS];
 
 int main(int argc, char* argv[]) {
 
 	fstream fin;
-	//int wordCount = 0;
 	initialize();
-
-
-	
 	fin.open(argv[1]);
 
 
@@ -62,9 +58,11 @@ int main(int argc, char* argv[]) {
 
 			//Read in line or until newline character reached
 			fin.getline(tempLine, 256, '\n');
-			parseLine(tempLine);
+			parseLine(tempLine); //parseLine calls checkWord and addWord
 
 		}
+
+		//Document has been read 
 		cout << "Word count: " << wordCount << endl;
 
 
@@ -77,6 +75,8 @@ int main(int argc, char* argv[]) {
 
 			cout << "Number of words with prefix ban are " << wordsWithPrefix("ban") << endl;
 
+				cout << "brillig count: " << wordsWithPrefix("brillig") << endl;
+			
 	}else {
 		cerr << "ERROR OPENING FILE..." << endl;
 		cerr << "TERMINATING PROGRAM";
@@ -96,8 +96,8 @@ void parseLine(string tempLine) {
 		string word, lowerWord;
 		iss >> word;
 		if(iss.fail())break;
-		lowerWord = checkWord(word);
-		addWord(lowerWord);
+		lowerWord = checkWord(word); //Discard punctuation and uppercase
+		addWord(lowerWord); //
 	}
 	return;
 }
@@ -155,49 +155,83 @@ void initialize() {
 //When a word is added to a node we will add word to the corresponding
 //branch of node cutting the leftmost character of word
 //If the needed branch does not exist we will have to create it
+
+
 void addWord(string word) {
 	
-	trieNode *current = head;	//Create node and set to root
-	current->prefixCount++;	//Increase prefix count as a new letter is added
+	//Create node and set to root
+	trieNode *current = head;
+
+	//Increase prefix count as a new letter is added	
+	current->prefixCount++;	
 
 	for(int i = 0; i < word.length(); i++) {
-		int letter = (int)word[i] - (int)'a'; //Extract first character of word
+
+		//Extract character from word
+		int letter = (int)word[i] - (int)'a'; 
 		
-		//If child branch does not exist it is created
+		//If child branch does not exist for letter, create it
 		if(current->child[letter] == NULL) {
 				current->child[letter] = new trieNode();
 		}
+		//Increase prefixCount as that path is traversed
 		current->child[letter]->prefixCount++;
+
+		//Change to the next level of the tree
 		current = current->child[letter];
 	}
+	//End of word
 	current->isEnd = true;
+	
+	if(wordsWithPrefix(word) > 1) {
+
+	}else {
+		cout << "Unique: " << word << endl;
+	}
 }
 
 bool search(string word) {
+
+	//Create node and set to root
 	trieNode *current = head;
+
 	for(int i = 0; i < word.length(); i++) {
 
+		//Extract character from word
 		int letter = (int)word[i] - (int)'a';
 
+		//If child branch does not exist the word does not exist
 		if(current->child[letter] == NULL) {
 			return false;
 		}
+
+		//Move down the tree
 		current = current->child[letter];
 	}
+	//If word is in trie this will return true
 	return current->isEnd;
 }
 
 
 int wordsWithPrefix(string prefix) {
+
+	//Create node and set it to root
 	trieNode *current = head;
+
 	for(int i = 0; i < prefix.length(); i++) {
+
+		//Extract character from word
 		int letter = (int)prefix[i] - (int)'a';
+
+		//If child branch does not exist the word does not exist
 		if(current->child[letter] == NULL) {
 			return 0;
 		}else {
+			//Otherwise it must exist, traverse this branch
 			current = current->child[letter];
 		}
 	}
+	//Returns number of times word is in trie
 	return current->prefixCount;
 }
 
