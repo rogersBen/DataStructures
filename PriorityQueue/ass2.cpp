@@ -9,6 +9,13 @@
 #include <iostream> 
 #include <fstream> 
 
+//Because each event has efficiency attached to it everytime the time is updated
+//this will need to be considered. For example if server i with efficiency ei serves
+//customer j with a service time tj the actual time taken to server the customer is
+// ei*tj
+//if server 5 has an efficiency of 1.2 and customer 7 has a service time of 5.0 then
+//server 5 takes a time of 6.0 to serve customer 7
+
 //Server
 struct event {
 	float eventTime;	//When the event will occur
@@ -57,7 +64,7 @@ int main(int argc, char* argv[]) {
 
 	//Initialise servers
 	for(int i = 0; i <= numServers;i++) {
-		//Read efficeincy of each server
+		//Read efficiency of each server
 		events[i] = new event;
 		events[i]->eventType = i;
 		events[i]->eventTime = 0.0;
@@ -111,42 +118,45 @@ int main(int argc, char* argv[]) {
 	while(numHeap > 0) {
 		//Set time to current event
 		then = now;
-		now = events[0]->eventTime;
+
+		//Multiple by the servers efficiency to get the real service time 
+		now = events[0]->eventTime; 
+		//cout << now << " ";
 
 		/*
 		cout << endl << "Debug" << endl;
 		cout << "It is now: " << now << endl;
-		if(events[0]->event_type==0) {
+		if(events[0]->eventType==0) {
 			cout << "Event is arrival " << arrivals << endl;
 		} else {
-			cout << "Event is a departure from server " << events[0]->event_type << endl;
+			cout << "Event is a departure from server " << events[0]->eventType << endl;
 		}
 		
 		cout<<"Heap has "<< numHeap <<" events on it."<<endl;
 		
 		for(int d= 0; d<numHeap;d++)
 			{
-			cout << "Heap["<< d <<"] is of type "<< events[d]->event_type
-			<<" and contains "<< events[d]->event_time <<" : "
-			<< events[d]->event_duration << endl;
+			cout << "Heap["<< d <<"] is of type "<< events[d]->eventType
+			<<" and contains "<< events[d]->eventTime <<" : "
+			<< events[d]->eventDuration << endl;
 		}
 		
 		cout<<"Idle list has "<< numIdle <<" events on it"<<endl;
 		
 		for(int d= numHeap;d<numServers;d++)
 			{
-			cout<<"Idle["<<d<<"] is of type "<<events[d]->event_type <<endl;
+			cout<<"Idle["<<d<<"] is of type "<<events[d]->eventType <<endl;
 		}
 	
 		for(int d= 0; d < numServers;d++) {
-			if(qlen[d]==0) {
+			if(qLength[d]==0) {
 				cout<<"Queue "<<d+1<<" is empty"<<endl;					
 			} else {
-				cout<<"Queue "<<d+1<<" contains "<<qlen[d]<<" items" <<endl;
-				cout<<"  Next item in queue arrived at " <<head[d]->arrival_time<<" and will take " <<head[d]->service_time<<" to serve"<<endl;					
+				cout<<"Queue "<<d+1<<" contains "<<qLength[d]<<" items" <<endl;
+				cout<<"  Next item in queue arrived at " <<head[d]->arrivalTime<<" and will take " <<head[d]->serviceTime<<" to serve"<<endl;					
 			}
-		}
-		*/
+		}*/
+		
 		
 		
 		//If arrival
@@ -156,6 +166,8 @@ int main(int argc, char* argv[]) {
 
 			fin >> events[0]->eventTime >> events[0]->eventDuration;
 
+
+			//This will need to be changed for end of file conditions
 			//Not final arrival
 			if(events[0]->eventTime != 0.0) {
 				//Arrival is valid
