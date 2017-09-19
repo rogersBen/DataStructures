@@ -62,8 +62,12 @@ int main(int argc, char* argv[]) {
 		events[i]->eventType = i;
 		events[i]->eventTime = 0.0;
 		events[i]->eventDuration = 0.0;
-		fin >> events[i]->efficiency;
 		//cout << events[i]->eventTime << " " << events[i]->eventDuration <<endl;
+	}
+
+	//Read in efficiency
+	for(int i = 0; i < numServers; i++) {
+		fin >> events[i]->efficiency;
 	}
 
 	//Read in first arrival
