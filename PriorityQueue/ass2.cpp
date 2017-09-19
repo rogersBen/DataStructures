@@ -62,6 +62,7 @@ int main(int argc, char* argv[]) {
 		events[i]->eventType = i;
 		events[i]->eventTime = 0.0;
 		events[i]->eventDuration = 0.0;
+		fin >> events[i]->efficiency;
 		//cout << events[i]->eventTime << " " << events[i]->eventDuration <<endl;
 	}
 
@@ -111,7 +112,6 @@ int main(int argc, char* argv[]) {
 		/*
 		cout << endl << "Debug" << endl;
 		cout << "It is now: " << now << endl;
-
 		if(events[0]->event_type==0) {
 			cout << "Event is arrival " << arrivals << endl;
 		} else {
@@ -133,7 +133,6 @@ int main(int argc, char* argv[]) {
 			{
 			cout<<"Idle["<<d<<"] is of type "<<events[d]->event_type <<endl;
 		}
-
 	
 		for(int d= 0; d < numServers;d++) {
 			if(qlen[d]==0) {
