@@ -8,6 +8,7 @@
 
 #include <iostream> 
 #include <fstream> 
+#include <iomanip>
 
 //Because each event has efficiency attached to it everytime the time is updated
 //this will need to be considered. For example if server i with efficiency ei serves
@@ -18,16 +19,16 @@
 
 //Server
 struct event {
-	float eventTime;	//When the event will occur
-	float eventDuration;	//How long the event will take
+	double eventTime;	//When the event will occur
+	double eventDuration;	//How long the event will take
 	int eventType; //0 is arrival, 1 completion of first server, 2 completion of second server etc
-	float efficiency;
+	double efficiency;
 };
 
 //Customer
 struct request {
-	float arrivalTime;
-	float serviceTime;
+	double arrivalTime;
+	double serviceTime;
 	request*next; //Linked list
 };
 
@@ -35,7 +36,7 @@ int numServers;
 int numHeap;
 int numIdle;	//Number of idle servers
 event**events;	//Contains pointers to both active events and idle ones
-float now,then;	//Time variables
+double now,then;	//Time variables
 int arrivals;	//Number of arrivals
 
 request**head;	//Head of linked list
@@ -52,30 +53,41 @@ int main(int argc, char* argv[]) {
 	
 	ifstream fin;
 
-	//Open file
-	fin.open(argv[1]);
+	char filename[32];
 
+
+	cout << "Filename: ";
+	cin >> filename;
+
+	//Open file
+	fin.open(filename);
+
+	if(!fin.good()) {
+		cerr << "ERROR OPENING FILE" << endl;
+		cerr << "TERMINATING" << endl;
+	} else {
+		
 	//Get number of servers
 	fin >> numServers;
-	cout << "Number of servers: " << numServers << endl;
 
 	//Allocate resources for events
 	events = new event*[numServers+1];
 
 	//Initialise servers
 	for(int i = 0; i <= numServers;i++) {
-		//Read efficiency of each server
 		events[i] = new event;
 		events[i]->eventType = i;
 		events[i]->eventTime = 0.0;
 		events[i]->eventDuration = 0.0;
-		//cout << events[i]->eventTime << " " << events[i]->eventDuration <<endl;
 	}
 
 	//Read in efficiency
 	for(int i = 0; i < numServers; i++) {
 		fin >> events[i]->efficiency;
+		//cout << i << " " << events[i]->efficiency << endl;
 	}
+
+	events[numServers]->efficiency = events[numServers-1]->efficiency;
 
 	//Read in first arrival
 	fin >> events[0]->eventTime >> events[0]->eventDuration;
@@ -98,11 +110,14 @@ int main(int argc, char* argv[]) {
 	
 	
 	//Variables for statistics collection
-	float*timeQ = new float[numServers];
+	double*timeQ = new double[numServers];
 	int*served = new int[numServers];
 	int*queued = new int[numServers];
 	int*maxQ = new int[numServers];
-	float*busy = new float[numServers];
+	double*busy = new double[numServers];
+	int maxQueueLength = 0;
+	double avgQTime = 0.0;
+	double avgQLength = 0.0;
 
 	//Initialize statistics variables
 	for(int s = 0; s < numServers; s++) {
@@ -114,28 +129,27 @@ int main(int argc, char* argv[]) {
 		served[s]= 0;
 		busy[s]= 0.0;
 	}
-		
+	
+	//While event priority queue not empty	
 	while(numHeap > 0) {
 		//Set time to current event
 		then = now;
 
-		//Multiple by the servers efficiency to get the real service time 
 		now = events[0]->eventTime; 
-		//cout << now << " ";
 
 		/*
-		cout << endl << "Debug" << endl;
-		cout << "It is now: " << now << endl;
+		cout << endl << "Test" << endl;
+		cout << "Time: " << now << endl;
 		if(events[0]->eventType==0) {
-			cout << "Event is arrival " << arrivals << endl;
+			cout << "arrival " << arrivals << endl;
 		} else {
-			cout << "Event is a departure from server " << events[0]->eventType << endl;
+			cout << "complete payment " << events[0]->eventType << endl;
 		}
 		
-		cout<<"Heap has "<< numHeap <<" events on it."<<endl;
+		cout<<"numHeap: "<< numHeap <<endl;
 		
-		for(int d= 0; d<numHeap;d++)
-			{
+		for(int d = 0; d<numHeap;d++)
+		{
 			cout << "Heap["<< d <<"] is of type "<< events[d]->eventType
 			<<" and contains "<< events[d]->eventTime <<" : "
 			<< events[d]->eventDuration << endl;
@@ -155,21 +169,27 @@ int main(int argc, char* argv[]) {
 				cout<<"Queue "<<d+1<<" contains "<<qLength[d]<<" items" <<endl;
 				cout<<"  Next item in queue arrived at " <<head[d]->arrivalTime<<" and will take " <<head[d]->serviceTime<<" to serve"<<endl;					
 			}
-		}*/
+		}
+		
+		char cont;
+		//cout << "\nContinue? ";
+		//cin >> cont;
+		*/
+		
 		
 		
 		
 		//If arrival
 		if(events[0]->eventType == 0) {
 
-			float serviceDuration = events[0]->eventDuration;
+			double serviceDuration = (events[0]->eventDuration * events[0]->efficiency);
 
 			fin >> events[0]->eventTime >> events[0]->eventDuration;
 
 
-			//This will need to be changed for end of file conditions
+
 			//Not final arrival
-			if(events[0]->eventTime != 0.0) {
+			if(!fin.eof()) {
 				//Arrival is valid
 				arrivals++;
 				siftDown(); //siftDown to ensure heap property is maintained
@@ -216,20 +236,28 @@ int main(int argc, char* argv[]) {
 
 				//Do queueing stats accumulation
 				queued[q]++;
-				if(maxQ[q] < qLength[q])maxQ[q] = qLength[q];
+				if(maxQ[q] < qLength[q]) {
+					maxQ[q] = qLength[q];
+				}
 				
 			}
 			else {
+				//idle serve available
 				//make another server busy
 				numHeap++;
+
 				numIdle--;
+				if(numHeap >= numServers) {
+					numHeap - numServers;
+				}
+				//cout << " B" << numHeap << endl;
 				events[numHeap-1]->eventTime = now + serviceDuration;
 				events[numHeap-1]->eventDuration = serviceDuration;
 				siftUp();
 			}
 			
 		} else {
-			//Do a service event
+			//Otherwise must be a customer complete payment event
 
 			//Add a service to the appropriate server
 			served[events[0]->eventType-1]++;
@@ -258,6 +286,7 @@ int main(int argc, char* argv[]) {
 				}	
 			}	
 		}
+
 		
 		//Statistics 
 		for(int s= 0; s<numServers;s++) {
@@ -266,47 +295,97 @@ int main(int argc, char* argv[]) {
 		
 		
 	}
-	
-	cout << endl << "**********************************************************" << endl;
 
-	cout << endl << "Multiple queue simulation with " << numServers << " servers:" << endl << endl;
-		
+	/*
+	//Debug efficiency
+	cout << "\n*********\n";
+	for(int i = 0; i < numServers; i++) {
+		cout << i << " " << events[i]->efficiency << endl;
+	}
+	*/
+
+	//Number of people in the queues
+	for(int s = 0; s < numServers; s++) {
+
+		if(maxQ[s] > maxQueueLength) {
+			maxQueueLength = maxQ[s];
+		}	
+	}
+
+	//Time spent in queues
+	for(int s = 0; s < numServers; s++) {
+		avgQLength += timeQ[s]/now;
+		avgQTime += timeQ[s]/queued[s];
+	}
+
+	avgQTime = avgQTime / numServers;
+	avgQLength = avgQLength / numServers;
 	
 	//Stats
-	cout <<"  Total Run time = "<< now <<endl;
-	cout <<"  Total Number Served = "<< arrivals << endl << endl;
+	cout << "Number of servers: " << numServers << endl;
+	cout << "Number of customers served: "<< arrivals << endl;	
+	cout << "Time last customer completed service: "<< setprecision(5) << now << endl;
+	cout << "Greatest length reached by the queue: " << maxQueueLength << endl;
+	cout << "Average length of the queue: "  << avgQLength << endl;
+	cout << "Average customer waiting time: " << avgQTime << endl << endl;
+	cout << "Checkout \t Priority \t CustomersServed \t IdleTime"<< endl;
+
+	//Each server statistics
 	for(int s = 0;s < numServers; s++) {
-		cout <<"  Server "<< s+1 <<" served "<< served[s] <<	" customers" << endl;
-		cout <<"      and was busy for a total of "<< busy[s] << endl;
-		cout <<"      and was idle for a total of "<< now-busy[s] << endl << endl;
+		cout << s;
+		cout << " \t\t " << events[s]->efficiency; 
+		cout << " \t " << served[s]; 
+		cout << " \t\t\t " << now-busy[s] << endl;
 	}
-	//Multiple queue stats
-	int totalQueued = 0;
+
+	cout << endl;
+
+	/*
+
+	//Number of people in the queues
 	for(int s = 0; s < numServers; s++) {
-		totalQueued+= queued[s];
+		cout<<"    "<<queued[s]<<" customers spent time in queue "
+		<<s<<endl;
+		cout<<"    with a maximum of "<<maxQ[s]<<
+		" queued at any one time"<<endl<<endl;
+
+		if(maxQ[s] > maxQueueLength) {
+			maxQueueLength = maxQ[s];
+		}	
 	}
 
-	cout << "A total of " << totalQueued << " customers were queued: of these:-" << endl << endl;
+	cout << endl;
 
-	for(int s= 0;s<numServers;s++) {
 
-		cout << "	" << queued[s] << "	customers spent time in queue " << s << endl;
-		cout << "	with a maximum of " << maxQ[s] << " queued at any one time" << endl << endl;
+
+	//Time spent in queues
+	for(int s = 0; s < numServers; s++) {
+			cout<<"  Average time in queue for server "<< 
+			s+1 << " (all customers for this server) = "<<
+			timeQ[s]/served[s] << endl;
+
+			cout<<"  Average time in queue for server "<<s+1<<
+				" (queued customers for this server) = "<<timeQ[s]/queued[s]
+				<<endl;
+			
+
+			cout<<"  Average length of queue for server "<<s+1<<" = "<<
+				timeQ[s]/now<<endl<<endl;
+
+			avgQLength += timeQ[s]/now;
+			avgQTime += timeQ[s]/queued[s];
 	}
-	for(int s= 0;s<numServers;s++) {
 
-		cout << "	Average time in queue for server " << s+1 << " (all customers for this server) = " <<timeQ[s]/served[s] << endl;
+	avgQTime = avgQTime / numServers;
+	avgQLength = avgQLength / numServers;
 
-		if(queued[s] == 0) {
-			cout << "	Average time in queue for server " << s+1 << " (queued customers for this server) = " << 0 << endl;
-		}else {
-			cout << "	Average time in queue for server " << s+1 << " (queued customers for this server) = " << timeQ[s]/queued[s] << endl;
-		}
-		cout << "	Average length of queue for server " << s+1 << " = " << timeQ[s]/now << endl << endl;
+	*/
 
+
+	cout << endl;
+	
 	}
-	cout << endl << "********************************************************************"<< endl << endl;
-		
+
 	
 	//Close file and deallocate resources
 	fin.close();
