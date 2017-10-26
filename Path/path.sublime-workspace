@@ -1,0 +1,550 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"max",
+				"maxRelevance"
+			],
+			[
+				"min",
+				"minRelevance"
+			],
+			[
+				"argumen",
+				"argumentA"
+			],
+			[
+				"obj",
+				"objKey"
+			],
+			[
+				"tra",
+				"translateX()"
+			],
+			[
+				"tr",
+				"translateX()"
+			],
+			[
+				"trans",
+				"transform"
+			],
+			[
+				"sele",
+				"selectAll"
+			],
+			[
+				"res",
+				"responseData"
+			],
+			[
+				"draw",
+				"drawEntityChart"
+			],
+			[
+				"sort",
+				"sortData"
+			],
+			[
+				"sortRele",
+				"sortRelevanceDesc"
+			],
+			[
+				"get",
+				"getTextFromFiles"
+			],
+			[
+				"proce",
+				"processingEvent"
+			],
+			[
+				"doAn",
+				"doAnalysisSave"
+			],
+			[
+				"downloa",
+				"downloadFile"
+			],
+			[
+				"sign",
+				"signDownloadKey"
+			],
+			[
+				"save",
+				"saveWatsonAnalysis"
+			],
+			[
+				"wat",
+				"watsonTextAnalysis"
+			],
+			[
+				"w",
+				"watsonTextAnalysis"
+			],
+			[
+				"pro",
+				"processingEvent"
+			],
+			[
+				"analy",
+				"analysisResults"
+			],
+			[
+				"ch",
+				"checkDatabaseStatus"
+			],
+			[
+				"conc",
+				"concatText"
+			],
+			[
+				"selecte",
+				"selectedKeys"
+			],
+			[
+				"mul",
+				"doMultipleAnalysis"
+			],
+			[
+				"files",
+				"filesService"
+			],
+			[
+				"analysis",
+				"analysisData"
+			],
+			[
+				"key",
+				"keywordCloud"
+			],
+			[
+				"dra",
+				"drawEntityChart"
+			],
+			[
+				"anal",
+				"analysisData"
+			],
+			[
+				"wo",
+				"wordsWithPrefix"
+			],
+			[
+				"lower",
+				"lowerWord"
+			],
+			[
+				"prefix",
+				"prefixCount"
+			],
+			[
+				"le",
+				"letter"
+			],
+			[
+				"trie",
+				"trieNode"
+			],
+			[
+				"pre",
+				"prefix"
+			],
+			[
+				"cut",
+				"cutLeftmostCharacter"
+			],
+			[
+				"not",
+				"notExists"
+			],
+			[
+				"cou",
+				"countPreffixes"
+			],
+			[
+				"count",
+				"countWords"
+			],
+			[
+				"add",
+				"addWord"
+			],
+			[
+				"word",
+				"wordCount"
+			],
+			[
+				"btn",
+				"btn-lg"
+			],
+			[
+				"b",
+				"button"
+			],
+			[
+				"bt",
+				"btn-lg"
+			],
+			[
+				"ana",
+				"analysisType"
+			],
+			[
+				"surveyC",
+				"surveyComplete"
+			],
+			[
+				"heap",
+				"heapIndex"
+			],
+			[
+				"vi",
+				"visuals"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"last_filter": "ht",
+		"selected_items":
+		[
+			[
+				"ht",
+				"HTMLPrettify"
+			],
+			[
+				"Packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev"
+	],
+	"file_history":
+	[
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/analysis.service.spec.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visualisations.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/wordCloud/wordCloud.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/analysis/analysis.controller.spec.js",
+		"/C/Users/Ben/Documents/Project/Donald Trump Great Memory.txt",
+		"/C/Users/Ben/Documents/Project/Same Sex Marriage.txt",
+		"/C/Users/Ben/Documents/Project/Very Hungry Caterpillar.txt",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/analysis.service.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/wordCloud/wordCloud.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/barChart/barChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/barChart/barChart.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visualisations.module.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/map/linkInfo/linkInfo.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/map/linkInfo/linkInfo.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/map.service.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/files.service.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/map/map.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/map/map.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/analysis/analysis.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/analysis/analysis.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/s3.service.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/analysis/newAnalysis/newAnalysis.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/analysis/newAnalysis/newAnalysis.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/surveyComplete/surveyComplete.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/surveyComplete/surveyComplete.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/surveyCreate/surveyCreate.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/surveyCreate/surveyCreate.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/survey.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/survey/survey.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/survey.service.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/files/filesBrowse/filesBrowse.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/files/filesBrowse/filesBrowse.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/karma.conf.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/files/filesUpload/filesUpload.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/test/lib/mockData.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/test/lib/specHelper.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/node_modules/karma/bin/karma",
+		"/C/Users/Ben/Documents/Multicore/ExamFormat",
+		"/C/Users/Ben/Documents/Multicore/Final/1a/gaus.cl",
+		"/C/Users/Ben/Documents/Multicore/Final/2b/luminance.cl",
+		"/C/Users/Ben/Documents/Multicore/Aidan/Ass3/bmpfuncs.h",
+		"/C/Users/Ben/Documents/Multicore/Aidan/Ass3/bmpfuncs.c",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/bubbleChart/bubbleChart.view.html",
+		"/C/Users/Ben/Documents/Multicore/Final/1c/mainC.c",
+		"/C/Users/Ben/Documents/Multicore/Final/1c/gaus.cl",
+		"/C/Users/Ben/Documents/Multicore/Final/2b/mainA.c",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/home/home.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/home/home.controller.js",
+		"/C/Users/Ben/Documents/Multicore/Assignments/Ass3/part1/gaus/gaus/main.c",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/donutChart/donutChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/treemapChart/treemapChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/bubbleChart/bubbleChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/analysis.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/map.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/files.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/db.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/datasets.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/users.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_api/models/surveys.js",
+		"/C/Users/Ben/Documents/203/203/CSCI203/Assignments/Assignment 3/ass1.cpp",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/networkChart/networkChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/pieChart/pieChart.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/pieChart/pieChart.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/donutChart/donutChart.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/networkChart/networkChart.view.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visualisations.view.html",
+		"/C/Users/Ben/Documents/d3/network/index4.html",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/dataTable/dataTable.controller.js",
+		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/treemapChart/treemapChart.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/donutChart/donutChart.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/pieChart/pieChart.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/barChart/barChart.view.html",
+		"/C/Users/Ben/Documents/d3/donut2/index.html",
+		"/C/Users/Ben/Documents/d3/pie2.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/pieChart/pieChart.controller.js",
+		"/C/Users/Ben/Documents/d3/adonutTest.html",
+		"/C/Users/Ben/Documents/d3/index.css",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visualisations.view.html",
+		"/C/Users/Ben/Documents/d3/index.js",
+		"/C/Users/Ben/Documents/d3/donut/species.tsv",
+		"/C/Users/Ben/Documents/d3/index.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/barChart/barChart.controller.js",
+		"/C/Users/Ben/Documents/d3/pieTest.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/analysis/newAnalysis/newAnalysis.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/bubbleChart/bubbleChart.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_api/controllers/analysis.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/survey/surveyResponseList/surveyResponseList.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/survey/survey.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/analysis/newAnalysis/newAnalysis.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/common/directives/navigation/navigation.template.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_api/models/analysis.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/analysis/analysis.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_api/controllers/files.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_api/routes/index.js",
+		"/C/Users/Ben/DataStructures/PriorityQueue/ass2.cpp",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/files/datasets/newDataset/newDataset.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/files/datasets/newDataset/newDataset.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/files/datasets/datasets.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/files/datasets/datasets.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/home/home.controller.js",
+		"/C/Users/Ben/nativeqda-dev/dist/app/components/analysis/analysis.view.html",
+		"/C/Users/Ben/nativeqda-dev/dist/app/components/files/filesBrowse/filesBrowse.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/home/home.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/common/services/files.service.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/files/filesBrowse/filesBrowse.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/wordCloud/wordCloud.controller.js",
+		"/C/Users/Ben/Documents/ambHelp2.txt",
+		"/C/Users/Ben/Documents/anu.txt",
+		"/C/Users/Ben/Documents/d3/wordCloud/index.html",
+		"/C/Users/Ben/Documents/d3/wordCloud/d3.layout.cloud.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/wordCloud/wordCloud.view.html",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/app.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/index.html",
+		"/C/Users/Ben/nativeqda-dev/gulp.config.json",
+		"/C/Users/Ben/nativeqda-dev/gulpfile.js",
+		"/C/Users/Ben/nativeqda-dev/package.json",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/config.js",
+		"/C/Users/Ben/DataStructures/Trie/data.txt",
+		"/C/Users/Ben/DataStructures/Trie/a1.cpp",
+		"/C/Users/Ben/Documents/203/Ass1/a1.cpp",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/basicTable/basicTable.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visualisations.controller.js",
+		"/C/Users/Ben/nativeqda-dev/src/app_client/components/visualisations/visuals/donutChart/donutChart.controller.js",
+		"/C/Users/Ben/Documents/d3/donutTest.html",
+		"/C/Users/Ben/Documents/tool.html",
+		"/C/Users/Ben/Documents/barTool.html",
+		"/C/Users/Ben/Documents/203/Ass1/data.txt",
+		"/C/Users/Ben/Documents/203/Ass1/stringstream.cpp"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"zoom",
+			"margin",
+			"clientWidth"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 45.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "path.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 251.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
