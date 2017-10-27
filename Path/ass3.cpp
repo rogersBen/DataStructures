@@ -1,4 +1,4 @@
- /*
+  /*
  	Filename:			ass3.cpp
  	Student Name:		Benjamin Rogers
  	Student Number:		4503600
@@ -8,8 +8,8 @@
 
 
 
- #include<iostream>
- #include<fstream>
+#include<iostream>
+#include<fstream>
 #include <cmath>
 
 
@@ -22,8 +22,6 @@ const int infinity = -1;
 
 
 
-verticeNode *vertices;
-edgeNode *edges;
 char source, destination;
 //A is represented by its ASCII value-1
 //coordinates[0][0] = x coordinate of node A
@@ -47,6 +45,8 @@ void modDijkstra(int, int);
 
  	cout << "Filename: ";
  	cin >> filename;
+
+ 	bool debug = false;
 
 
 
@@ -74,20 +74,14 @@ void modDijkstra(int, int);
 
  		
  		for(int i = 0; i < numVert; i++) {
- 			
+ 			char label;
  			//If using struct
- 			fin >> vertices[i].label;
- 			fin >> vertices[i].xCoord;
- 			fin >> vertices[i].yCoord;
+ 			fin >> label;
  			
- 			int coord = (int(vertices[i].label)) - 96;
+ 			int coord = (int(label)) - 96;
+ 			fin >> coordinates[coord-1][0];
+ 			fin >> coordinates[coord-1][1];
  			
- 			//cout << vertices[i].label << " Ascii: " << coord << endl;
-
- 			//coord[a][0] = x coordinate
- 			//coord[a][1] = y coordinate
- 			coordinates[coord-1][0] = vertices[i].xCoord;
- 			coordinates[coord-1][1] = vertices[i].yCoord;
  		}
  		
  		costs = new double*[numEdges];
@@ -102,19 +96,25 @@ void modDijkstra(int, int);
  		
  		//Read in costs of edges
  		for(int i = 0; i < numEdges; i++) {
- 			fin >> edges[i].origin;
- 			fin >> edges[i].destination;
- 			fin >> edges[i].weight;
+ 			char origin, destination;
+ 			int weight;
 
- 			int originCoord = (int(edges[i].origin)) - 96;
- 			int destinationCoord = (int(edges[i].destination)) - 96;
+ 			fin >> origin;
+ 			fin >> destination;
+ 			fin >> weight;
 
- 			//cout << edges[i].origin << " Ascii: " << originCoord << endl;
- 			//cout << edges[i].destination << " Ascii: " << destinationCoord << endl;
+ 			int originCoord = (int(origin)) - 96;
+ 			int destinationCoord = (int(destination)) - 96;
+
+ 			if(debug) {
+ 				cout << origin << " Ascii: " << originCoord << endl;
+ 				cout << destination << " Ascii: " << destinationCoord << endl;
+ 			}
+
 
  			//Set a value for the edge between two nodes
- 			costs[originCoord-1][destinationCoord-1] = edges[i].weight; 
- 			costs[destinationCoord-1][originCoord-1] = edges[i].weight;
+ 			costs[originCoord-1][destinationCoord-1] = weight; 
+ 			costs[destinationCoord-1][originCoord-1] = weight;
  			
  		}
 
