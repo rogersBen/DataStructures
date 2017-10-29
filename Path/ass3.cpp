@@ -24,6 +24,7 @@ int pass = 1;
  	
 int numEdges = 0;
 
+
 char source, destination;
 //A is represented by its ASCII value-1
 //coordinates[0][0] = x coordinate of node A
@@ -32,14 +33,15 @@ double** coordinates = 0; //2d array of doubles for coordinates
 //costs[origin-1][destination-1] = weight of edge
 double** costs = 0;
 double* distances = 0;
+int globalEnd;
 
 
 void printAll(int, double**);
 int findSmallestIndex(double[], bool[]);
-int modDijkstra(double**, int, int);
+int modDijkstra(double**, int, int, bool, int);
 
-void secondFastest(int, int, bool*, int);
-void second(int*, int, int);
+
+int second(int*, int, int, int, int, int&);
 
  int main() {
 
@@ -114,6 +116,7 @@ void second(int*, int, int);
  			int originCoord = (int(origin)) - 96;
  			int destinationCoord = (int(destination)) - 96;
 
+
  			if(debug) {
  				cout << origin << " Ascii: " << originCoord << endl;
  				cout << destination << " Ascii: " << destinationCoord << endl;
@@ -128,6 +131,7 @@ void second(int*, int, int);
 
  		fin >> source;
  		fin >> destination;
+
  		
 
  	}else {
@@ -145,10 +149,13 @@ void second(int*, int, int);
 	int start = (int(source)-96);
  	int end = (int(destination)-96);
 
- 	int shortest = modDijkstra(costs, start, end); 
+ 	globalEnd = end;
 
 
- 	cout << "Shortest: " << shortest << endl;
+ 	int shortest = modDijkstra(costs, start, end, true, 1); 
+
+
+ 	//cout << "Shortest: " << shortest << endl;
 
 
  	//Delete Dynamic memory
@@ -193,7 +200,9 @@ void printAll(int numEdges, double** costs) {
  }
 
 
-int modDijkstra(double **costs, int start, int end) {
+int modDijkstra(double **costs, int start, int end, bool first, int isEnd) {
+
+	//cout << "This is start: " << start << endl << "This is end: " << end << endl;
 
 	bool *visited = new bool[numEdges];				// Stores visited nodes 
 	bool *additionalNodes = new bool[numEdges];		// Stores visited nodes not included in the final path
@@ -233,108 +242,132 @@ int modDijkstra(double **costs, int start, int end) {
 	}
 
 
-	
-	cout << "Length of shortest path: " << totalCostToNode[end] << endl;
-	
-	int x = 0;
-	source = end;
-	
-	do{
-		path[x] = source;					// Stores the path to be later printed in reverse
-		additionalNodes[source] = false;	// Unflags values that have already been read from solution tree
-		source = via[source];
-		x++;
-	}while(source != start);
-	
-	// Prints out the path in reverse
-	cout << "Shortest path: " << start + 1 << " ";
+	if(first || pass ==2) {
 
-	for(int i = x-1; i >= 0; i--) {
-		cout << path[i]+1 << " ";
-	}
-	cout << endl;
+		if(pass == 1) {
+			cout << "Length of shortest path: " << totalCostToNode[end] << endl;
+		}else {
+			cout << ": Length of second shortest path" << endl;
 
-
-
-	// Prints out visited nodes not included in the final path
-	cout << "Additional nodes in the solution tree: ";
-	for(int i = 0; i < numEdges; i++){
-		if (additionalNodes[i]){
-			cout << i+1 << " ";
-			numAdditionalNodes++;	//Count number of additional nodes in solution tree
 		}
+	
+		
+		int x = 0;
+		source = end;
+
+		
+		do{
+			path[x] = source;					// Stores the path to be later printed in reverse
+			additionalNodes[source] = false;	// Unflags values that have already been read from solution tree
+			source = via[source];
+			x++;
+		}while(source != start);
+		
+		// Prints out the path in reverse
+		if(pass == 1) {
+			cout << "Shortest path: " << start + 1 << " ";
+
+			for(int i = x-1; i >= 0; i--) {
+				cout << path[i]+1 << " ";
+			}
+			cout << endl << endl;
+
+		}else {
+			cout << "Shortest path: " << start + 1 << " ";
+			for(int i = x-1; i >= 0; i--) {
+				cout << path[i]+1 << " ";
+			}
+
+			if(isEnd == 3) {
+				//cout << "This should be the last:";
+				cout  << globalEnd << endl;
+			}
+			cout << endl;
+		}
+
+
 	}
-	cout << endl;
-
-
-	cout << "\nNumber of additional nodes in the solution tree: " << numAdditionalNodes << endl;
-
-
+	
+	
 	
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	int* extraNodes = new int[numAdditionalNodes];
 
-	//Store additional nodes for second fastest path
-	for(int i = 0; i < numEdges; i++){
-		if (additionalNodes[i]) {
-			extraNodes[i] = i+1;
-		}else if(i == start) {
-			extraNodes[i] = start+1;
-		}else if(i == end) {
-			extraNodes[i] = end+1;
+	int secondStart = 0;
+	int secondEnd = 0;
+
+
+	if(first) {
+	 	int *adjacentToStart = new int[numVert];
+	 	int countStart  = 0;
+	 	int node = 0;
+
+	 	//Initialize
+	 	for(int i = 0; i < numVert; i ++) {
+	 		adjacentToStart[i] = infinity;
+	 	}
+
+	 	//Grab nodes connected to start
+	 	for(int i = 0; i < numEdges; i ++) {
+	 		if(costs[start][i] > infinity) {
+
+	 			adjacentToStart[countStart] = i;
+	 			countStart++;
+	 		}
+	 	}
+
+	 	secondStart = second(adjacentToStart, start, end, countStart, totalCostToNode[end], node);
+
+	 	//cout << "Start: " << secondStart << " node: " << node << endl;
+	
+		int *adjacentToEnd = new int[numVert];
+	 	int countEnd  = 0;
+
+	 	//Initialize
+	 	for(int i = 0; i < numVert; i ++) {
+	 		adjacentToEnd[i] = infinity;
+	 	}
+
+	 	//Grab nodes connected to end
+	 	for(int i = 0; i < numEdges; i ++) {
+	 		if(costs[end][i] > infinity) {
+
+	 			adjacentToEnd[countEnd] = i;
+	 			countEnd++;
+	 		}
+	 	}
+
+
+	 	secondEnd = second(adjacentToEnd, start, end, countEnd, totalCostToNode[end], node);
+
+	 	//cout << "End: " << secondEnd << " node " << node << endl;
+
+	 	pass++;
+
+	 	if(secondStart < secondEnd) {
+			//Start is second shortest
+	 		cout << node << secondStart;
+
+	 		modDijkstra(costs, node, end, false, 2);
+
+		} else {
+			//End is second shortest
+			cout << secondEnd;
+			//if 3 print end node
+			//cout << "Start: " << start << " " << node << endl;
+			modDijkstra(costs, start+1, node, false, 3);
+
 		}
+
+	 	delete[] adjacentToStart;
+		delete[] adjacentToEnd;
+
+		
 	}
 
 
-	additionalNodes[start] = start+1;
-	additionalNodes[end] = end+1;
-	
 
-
-
- 	int *adjacentToStart = new int[numVert];
- 	int countStart  = 0;
-
- 	int tempNode = start;
- 	for(int i = 0; i < numEdges; i ++) {
- 		if(costs[tempNode][i] > infinity) {
- 			adjacentToStart[countStart] = i;
- 			//cout << "Cost: " <<  costs[tempNode][i] << " From " << start << " to " << i << endl;
- 			countStart++;
- 		}
- 	}
-
-
-
- 	cout << endl;
-
- 	int *adjacentToEnd = new int[numVert];
- 	int countEnd = 0;
-
-
- 	int tempNodeB = end;
- 	for(int i = 0; i < numEdges; i ++) {
- 		if(costs[tempNodeB][i] > infinity) {
- 			adjacentToEnd[countEnd] = i;
- 			cout << "Cost: " <<  costs[tempNodeB][i] << " From " << end << " to " << i << endl;
- 			countEnd++;
- 		}
- 	}
-	
-	/*
-	cout << "\nThese nodes are adjacent to end: " << endl;
-	for(int i = 0; i < numVert; i ++) {
-		if(adjacentToEnd[i] > 0 && adjacentToEnd[i] < 10) {
-			cout << adjacentToEnd[i] << endl;
-		}
-	}
-	*/
- 	if(pass == 1) {
- 		second(adjacentToStart, start+1, end+1);
- 		pass++;		
- 	}
 
 	
 	// Deletes dynamic memory
@@ -344,26 +377,41 @@ int modDijkstra(double **costs, int start, int end) {
 	delete[] via;
 
 
+
 	return totalCostToNode[end];
 }
 
-void secondFastest(int start, int end, bool* additionalNodes, int numAdditionalNodes) {
 
-}
 
-void second(int* adjacentTo, int start, int end) {
-	cout << endl << "*******************************************" << endl;
-	cout << start << endl << end << endl;
+int second(int* adjacentTo, int start, int end, int count, int totalCostToNode, int &node) {
 
-	cout << "\nThese nodes are adjacent to start: " << endl;
- 	for(int i = 0; i < numVert; i ++) {
- 		if(adjacentTo[i] > 0) {
- 			cout << adjacentTo[i] << " " << i << endl;
- 		}
- 	}
+	int newPath = 10000;
+	int finalNode = 0;
 
- 	
- 	int second = modDijkstra(costs, adjacentTo[1], end);
+ 		for(int i = 0; i < count; i ++) {
+
+	 		if(adjacentTo[i] > 0 && adjacentTo[i] < numVert) {
+
+	 			//Find route
+	 			//index is nothing, value is the node travelled to from origin
+	 			int temp = modDijkstra(costs, adjacentTo[i], end, false, 1);
+
+	 			if(temp < newPath) {
+	 				newPath = temp;
+	 				node = adjacentTo[i]+1;
+	 				
+	 			}
+	 	
+	 		}
+	 	}
+
+	 	//cost = newPath, node = finalNode
+	 	//cout << "This is newPath: " << newPath+totalCostToNode << " at this node: " << finalNode<<  endl;
+	 	//cout << "Path: " << start << " " << finalNode << " path " << end << endl;
+
+	 	return (newPath+totalCostToNode);
+
+
 }
 
 

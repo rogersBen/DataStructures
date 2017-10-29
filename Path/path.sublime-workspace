@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"final",
+				"finalNode"
+			],
+			[
+				"new",
+				"newPath"
+			],
+			[
+				"ad",
+				"adjacentToStart"
+			],
+			[
+				"adja",
+				"adjacentToStart"
+			],
+			[
+				"adjacen",
+				"adjacentToStart"
+			],
+			[
+				"num",
+				"numVert"
+			],
+			[
+				"tot",
+				"totalCostToNode"
+			],
+			[
 				"font",
 				"font-weight"
 			],
@@ -216,9 +244,20 @@
 	"buffers":
 	[
 		{
+			"file": "ass3.cpp",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 8780,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "data.txt",
+			"settings":
+			{
+				"buffer_size": 878,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -267,6 +306,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ben/Documents/Multicore/ExamFormat",
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/common/services/analysis.service.spec.js",
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visualisations.controller.js",
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/components/visualisations/visuals/wordCloud/wordCloud.controller.js",
@@ -304,7 +344,6 @@
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/test/lib/mockData.js",
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/src/app_client/test/lib/specHelper.js",
 		"/C/Users/Ben/Documents/GitHub/nativeqda-dev/node_modules/karma/bin/karma",
-		"/C/Users/Ben/Documents/Multicore/ExamFormat",
 		"/C/Users/Ben/Documents/Multicore/Final/1a/gaus.cl",
 		"/C/Users/Ben/Documents/Multicore/Final/2b/luminance.cl",
 		"/C/Users/Ben/Documents/Multicore/Aidan/Ass3/bmpfuncs.h",
@@ -398,7 +437,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -437,18 +476,48 @@
 			[
 				{
 					"buffer": 0,
+					"file": "ass3.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 8780,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7180,
+								7180
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3701.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "data.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								384,
+								386
 							]
 						],
 						"settings":
@@ -459,7 +528,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
